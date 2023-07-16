@@ -67,6 +67,16 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+   void _decrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +125,39 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+             
+     floatingActionButton: Wrap( //will break to another line on overflow
+                  direction: Axis.horizontal, //use vertical to show  on vertical axis
+                  children: <Widget>[
+                       
+
+                        Container( 
+                          margin:EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            onPressed: 
+                               _decrementCounter,
+                            
+                            backgroundColor: Colors.deepPurpleAccent,
+                            child: Icon(Icons.add),
+                          )
+                        ), // button second
+
+                        Container(
+                          margin:EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            onPressed: 
+                                _incrementCounter,
+                            
+                            backgroundColor: Colors.deepOrangeAccent,
+                            child: Icon(Icons.add),
+                          )
+                        ), // button third
+
+                        // Add more buttons here
+                ],
+            ),
+      
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
